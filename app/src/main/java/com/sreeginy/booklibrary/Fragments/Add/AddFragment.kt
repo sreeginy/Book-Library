@@ -27,5 +27,8 @@ class addFragment : Fragment() {
 
     private fun insertDataToDatabase() {
 
+        val firstName = addFirstName_et.text.toString()
+        val lastName = addLastName_et.text.toString()
+        val age = addAge_et.text
     }
 }
