@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
+import com.sreeginy.booklibrary.Data.UserViewModel
 import com.sreeginy.booklibrary.R
 
 class addFragment : Fragment() {
@@ -16,11 +18,14 @@ class addFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_add, container, false)
 
-
+        mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
+        view.add_btn.setOnClickListener {
+            insertDataToDatabase()
+        }
         return view
     }
 
     private fun insertDataToDatabase() {
-        
+
     }
 }
