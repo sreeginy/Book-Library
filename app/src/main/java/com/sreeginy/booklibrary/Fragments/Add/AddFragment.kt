@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.sreeginy.booklibrary.Data.UserViewModel
 import com.sreeginy.booklibrary.R
@@ -34,7 +35,9 @@ class addFragment : Fragment() {
         val age = addAge_et.text
 
         if(inputCheck(firstName, lastName, age)) {
-            val user = User(0, firastName, lastName, age)
+            val user = User(0, firastName, lastName, Integer.parseInt(age.toString()))
+            mUserViewModel.addUser(user)
+            Toast.make.Text(this,"Sucessfully added!", Toat.LENGTH_LONG)
         }
     }
 
