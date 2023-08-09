@@ -1,6 +1,7 @@
 package com.sreeginy.booklibrary.Fragments.Add
 
 import android.os.Bundle
+import android.text.Editable
 import android.text.TextUtils
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -31,9 +32,13 @@ class addFragment : Fragment() {
         val firstName = addFirstName_et.text.toString()
         val lastName = addLastName_et.text.toString()
         val age = addAge_et.text
+
+        if(inputCheck(firstName, lastName, age)) {
+            val user = User(0, firastName, lastName, age)
+        }
     }
 
-    private fun inputCheck(firstName: String, lastName: String): Boolean {
+    private fun inputCheck(firstName: String, lastName: String, age:Editable): Boolean {
         return !(TextUtils.isEmpty(firstName) && TextUtils.isEmpty(lastName) && age.isEmpty())
     }
 }
