@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ListAdapter
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.sreeginy.booklibrary.Data.UserViewModel
 import com.sreeginy.booklibrary.R
@@ -25,6 +27,11 @@ class ListFragment : Fragment() {
         val recyclerView = view.recyclerview
         recyclerView.adapter = adapter
         recyclerView.LayoutManager = LinerLayoutManager(requireContext())
+
+        mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
+        mUserViewModel.readAllData.observe(this, Observer {
+            adapter.setData()
+        })
 
         view.floatingActionButton.setOnClickListener {
             findNavController().navigate(R.id.action_listFragment_to_addFragment)
