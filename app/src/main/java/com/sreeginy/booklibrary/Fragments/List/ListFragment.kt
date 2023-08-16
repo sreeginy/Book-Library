@@ -15,7 +15,7 @@ import com.sreeginy.booklibrary.R
 
 class ListFragment : Fragment() {
 
-    public lateinit var floatingActionButton: FloatingActionButton
+    private lateinit var floatingActionButton: FloatingActionButton
     private lateinit var mUserViewModel: UserViewModel
 
     override fun onCreateView(
