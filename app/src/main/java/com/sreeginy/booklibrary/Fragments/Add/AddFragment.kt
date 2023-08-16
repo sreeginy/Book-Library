@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -19,6 +20,8 @@ import kotlinx.android.synthetic.main.fragment_add.view.*
 class AddFragment : Fragment() {
 
     private lateinit var addButton: Button
+    private lateinit var firstNameEt: EditText
+    private lateinit var lastNameEt: EditText
     private lateinit var mUserViewModel: UserViewModel
 
     override fun onCreateView(
@@ -30,6 +33,8 @@ class AddFragment : Fragment() {
 
         mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
         addButton = view.findViewById(R.id.addBtn)
+        firstNameEt = view.findViewById(R.id.addFirstName_et)
+        lastNameEt = view.findViewById(R.id.addLastName_et)
         addButton.setOnClickListener {
             insertDataToDatabase()
         }
@@ -37,6 +42,7 @@ class AddFragment : Fragment() {
     }
 
     private fun insertDataToDatabase() {
+
         val firstName = view?.addFirstName_et?.text.toString()
         val lastName = view?.addLastName_et?.text.toString()
         val age = view?.addAge_et?.text
