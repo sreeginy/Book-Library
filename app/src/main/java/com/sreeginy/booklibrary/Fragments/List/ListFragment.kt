@@ -9,11 +9,13 @@ import android.widget.ListAdapter
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.sreeginy.booklibrary.Data.UserViewModel
 import com.sreeginy.booklibrary.R
 
 class ListFragment : Fragment() {
 
+    public lateinit var floatingActionButton: FloatingActionButton
     private lateinit var mUserViewModel: UserViewModel
 
     override fun onCreateView(
@@ -23,19 +25,24 @@ class ListFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_list, container, false)
 
-        val adapter = ListAdapter()
-        val recyclerView = view.recyclerview
-        recyclerView.adapter = adapter
-        recyclerView.LayoutManager = LinerLayoutManager(requireContext())
 
-        mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
-        mUserViewModel.readAllData.observe(this, Observer {
-            adapter.setData()
-        })
-
-        view.floatingActionButton.setOnClickListener {
+        floatingActionButton = view.findViewById(R.id.floatingActionButton)
+        floatingActionButton.setOnClickListener {
             findNavController().navigate(R.id.action_listFragment_to_addFragment)
         }
+//
+//
+//        val adapter = ListAdapter()
+//        val recyclerView = view.recyclerview
+//        recyclerView.adapter = adapter
+//        recyclerView.LayoutManager = LinerLayoutManager(requireContext())
+//
+//        mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
+//        mUserViewModel.readAllData.observe(this, Observer {
+//            adapter.setData()
+//        })
+
+
         
         return view
     }
